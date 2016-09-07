@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async</title>
+    <script>
+// async
+function printAsync5000() {
+var i = 1;
+setTimeout(function timerId() {
+  document.writeln(i);
+  i++;
+  if (true) setTimeout(timerId, 5000);
+}, 0);
+}
+printAsync5000();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
