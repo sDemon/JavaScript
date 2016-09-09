@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor</title>
+    <script>
+        "use strict";
+        function SimpleNumber() {
+            this.readNum = function() {
+                this.num = +prompt('Enter integer number from 2 till 100', '');
+            };
+            this.testNum = function() {
+                if(this.num < 2) return false + ' this number is not simple';
+                for (let i = 2; i < this.num; i++) {
+                    if(this.num%i==0)
+                        return false + ' this number is not simple';
+                }
+                return this.num + ' is simple number';
+            };
+        }
+        var simpleNumber = new SimpleNumber();
+        simpleNumber.readNum();
+        document.writeln(simpleNumber.testNum());
+    </script>
+</head>
+<body>
+</body>
+</html>
