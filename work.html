@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CarData</title>
+    <script>
+        "use strict";
+        var description = "Insurance description";
+        var data = {
+             name: "Opel"
+            ,model: "Astra"
+            ,type: "sedan"
+                    };
+        function Car(data) {
+              var fullName = function() {
+              return this.name + " " + this.model + " " + this.type;
+          };
+          var timeOfSell = function (date) {
+              if (date === undefined) {
+                  date = null;
+              }
+              else {
+                  date = new Date(date);
+              }
+              return date;
+          };
+          var insuranceType = function (insname) {
+                return insname + " Description " + description;
+          };
+          var timeOfInsurance =function () {
+              var ins = new Date(prompt("Enter date of insurance termination",""));
+              return ins;
+          };
+          var insuranceLeft = function () {
+              if (timeOfSell() === null) {
+                  return "Car is not bought";
+              }
+              else {
+                  var diff = Math.abs(this.timeOfInsurance() - this.timeOfSell());
+                  return (diff / (1000 * 3600 * 24)) + "days left";
+              }
+          };
+            this.name = data.name;
+            this.model = data.model;
+            this.type = data.type;
+            this.fullName = fullName;
+            this.timeOfSell = timeOfSell;
+            this.insuranceType = insuranceType;
+            this.timeOfInsurance = timeOfInsurance;
+            this.insuranceLeft = insuranceLeft;
+        }
+var test = new Car(data);
+console.log(test.fullName());
+console.log(test.timeOfSell());
+console.log(test.insuranceType("TEST"));
+console.log(test.timeOfInsurance());
+console.log(test.insuranceLeft());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

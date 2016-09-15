@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>callback</title>
+    <script>
+        "use strict";
+        var a = 100;
+      function callback() {
+            function start() {
+                   while (a > 0) {
+                    document.writeln(a);
+                    return setTimeout(callback, 5000);
+                }
+            }
+            a--;
+            start();
+            };
+            callback();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
