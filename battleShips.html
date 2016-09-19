@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson5</title>
+    <script>
+var propOfShips = {
+    0: {
+        type: "cruiser"
+        , hp: 2000
+        , energy: 1500
+    },
+    1: {
+        type: "lincor"
+        , hp: 3000
+        , energy: 2000
+    },
+    2: {
+        type: "submarine"
+        , hp: 500
+        , energy: 2500
+    },
+    3: {
+        type: "destroyer"
+        , hp: 1500
+        , energy: 2000
+    },
+    4: {
+        type: "torpedoBoat"
+        , hp: 1250
+        , energy: 2250
+    }
+};
+var teams = {
+    1: {}
+    , 2: {}
+};
+"use strict";
+function Ship(propOfShips) {
+  for (var i in propOfShips){
+  // making teams
+  teams[1][i] = propOfShips[Math.floor(Math.random() * i)];
+  teams[2][i] = propOfShips[Math.floor(Math.random() * i)];
+   }
+  console.log(teams);
+  var fire = function () {
+      for (var f in teams){
+
+
+          console.log(this[f]);
+      }
+      
+  } 
+
+
+
+
+
+
+
+
+
+
+
+    this.type = propOfShips.type;
+    this.hp = propOfShips.hp;
+    this.energy = propOfShips.energy;
+    this.fire = fire;
+
+
+
+}
+var test = new Ship(propOfShips);
+        console.log(test.fire());
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
