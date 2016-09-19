@@ -49,15 +49,33 @@ function Ship() {
         console.log(teams);
     };
   var fire = function () {
+      var allHpTeam1=0;
+      for (var n in teams[1]){
+
+       allHpTeam1+=teams[1][n].hp;
+
+      };
+      console.log(allHpTeam1);
+      var allHpTeam2=0;
+      for (var n in teams[2]){
+
+          allHpTeam2+=teams[2][n].hp;
+
+      };
+      console.log(allHpTeam2);
+      //while
       for (var t in teams){
           for (var f in teams[t]){
               if (t==1){
-              var randEnergy = Math.floor(Math.random() * ((teams[t][f].energy)*1.1)-((teams[t][f].energy)*0.9)+1)+((teams[t][f].energy)*0.9);
-                  //console.log(randEnergy);
+              var randEnergy = Math.floor(Math.random() * ((teams[1][f].energy)*1.1)-((teams[1][f].energy)*0.9)+1)+((teams[1][f].energy)*0.9);
                   teams[2][f].hp = teams[2][f].hp - randEnergy;
-                  // ALL PROPERTIES ARE CHANGED ???
                   console.log(teams[2][f].hp);
-                                };
+                                }
+              else if (t==2){
+                  var randEnergy = Math.floor(Math.random() * ((teams[2][f].energy)*1.1)-((teams[2][f].energy)*0.9)+1)+((teams[2][f].energy)*0.9);
+                  teams[1][f].hp = teams[1][f].hp - randEnergy;
+                  console.log(teams[1][f].hp);
+              };
 }
 }
   };
