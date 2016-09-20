@@ -8,72 +8,86 @@ var propOfShips = {
     0: {
         type: "cruiser"
         , hp: 2000
-        , energy: 1500
+        , energy: 150
     },
     1: {
         type: "lincor"
         , hp: 3000
-        , energy: 2000
+        , energy: 200
     },
     2: {
         type: "submarine"
         , hp: 500
-        , energy: 2500
+        , energy: 350
     },
     3: {
         type: "destroyer"
         , hp: 1500
-        , energy: 2000
+        , energy: 200
     },
     4: {
         type: "torpedoBoat"
         , hp: 1250
-        , energy: 2250
+        , energy: 225
     }
 };
 var teams = {
     1: {}
     , 2: {}
 };
+
 "use strict";
-function Ship(propOfShips) {
-  for (var i in propOfShips){
-  // making teams
-  teams[1][i] = propOfShips[Math.floor(Math.random() * i)];
-  teams[2][i] = propOfShips[Math.floor(Math.random() * i)];
-   }
-  console.log(teams);
+function Ship() {
+    var makeTeams = function () {
+
+        for (var i in propOfShips){
+            // making teams
+            teams[1][i] = propOfShips[Math.floor(Math.random() * i)];
+            teams[2][i] = propOfShips[Math.floor(Math.random() * i)];
+        }
+        teams = JSON.parse(JSON.stringify(teams));
+        console.log(teams);
+    };
   var fire = function () {
-      for (var f in teams){
+      var allHpTeam1=0;
+      for (var n in teams[1]){
 
+       allHpTeam1+=teams[1][n].hp;
 
-          console.log(this[f]);
-      }
-      
-  } 
+      };
+      console.log(allHpTeam1);
+      var allHpTeam2=0;
+      for (var n in teams[2]){
 
+          allHpTeam2+=teams[2][n].hp;
 
-
-
-
-
-
-
-
-
-
-    this.type = propOfShips.type;
-    this.hp = propOfShips.hp;
-    this.energy = propOfShips.energy;
+      };
+      console.log(allHpTeam2);
+      //while
+      for (var t in teams){
+          for (var f in teams[t]){
+              if (t==1){
+              var randEnergy = Math.floor(Math.random() * ((teams[1][f].energy)*1.1)-((teams[1][f].energy)*0.9)+1)+((teams[1][f].energy)*0.9);
+                  teams[2][f].hp = teams[2][f].hp - randEnergy;
+                  console.log(teams[2][f].hp);
+                                }
+              else if (t==2){
+                  var randEnergy = Math.floor(Math.random() * ((teams[2][f].energy)*1.1)-((teams[2][f].energy)*0.9)+1)+((teams[2][f].energy)*0.9);
+                  teams[1][f].hp = teams[1][f].hp - randEnergy;
+                  console.log(teams[1][f].hp);
+              };
+}
+}
+  };
+    //this.type = propOfShips.type;
+    //this.hp = propOfShips.hp;
+    //this.energy = propOfShips.energy;
     this.fire = fire;
-
-
-
+    this.makeTeams = makeTeams;
 }
 var test = new Ship(propOfShips);
+        console.log(test.makeTeams());
         console.log(test.fire());
-
-
 
     </script>
 </head>
