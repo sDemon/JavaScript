@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tooltip</title>
+
+</head>
+<body>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<span  class="tooltip" data-tooltip="<h1> TEST </h1>">TEXT</span>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+    "use strict";
+    $(document).ready(function() {
+        var moveLeft = 10;
+        var moveDown = 10;
+        $("[data-tooltip]").hover(
+                function(e) {
+                    var tooltip = $(this).attr("data-tooltip");
+                    $(this).before('<div id="tooltip"></div>')
+                    $("div#tooltip").html(tooltip);
+                },
+                function(e) {
+                    $("div#tooltip").remove();
+                }
+        );
+        $("[data-tooltip]").mousemove(function(e) {
+            $("div#tooltip").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+    });
+</script>
+<style>
+    div#tooltip {
+        position: absolute;
+        z-index: 200;
+        background: #3A7EEC;
+        color: #ff69b4;
+        border-radius: 10px;
+        padding: 14px;
+        text-align: center;
+    }
+</style>
+</body>
+</html>
